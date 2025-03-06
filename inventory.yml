@@ -1,0 +1,5 @@
+all:
+  children:
+    channing:
+      hosts:
+        w6ei-channing-sector-ne.local.mesh

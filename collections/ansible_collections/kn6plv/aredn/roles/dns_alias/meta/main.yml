@@ -1,0 +1,4 @@
+galaxy_info:
+  role_name: "dns_alias"
+  author: "Tim Wilkinson"
+  description: "Add a dns alias"

@@ -1,0 +1,13 @@
+- include_role:
+    name: base
+  when: kn6plv_aredn_base_loaded is not defined
+
+- name: Mac address to hostname/ip mapping
+  dhcpaddress:
+    name: "{{ item.name }}"
+    address: "{{ item.address }}"
+    macaddress: "{{ item.macaddress }}"
+    propagate: "{{ item.propagate | default(false) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ dhcp_address | default([]) }}"
+  notify: update config

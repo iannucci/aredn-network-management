@@ -1,0 +1,16 @@
+- include_role:
+    name: base
+  when: kn6plv_aredn_base_loaded is not defined
+
+- name: Advertise services
+  advertise:
+    name: "{{ item.name }}"
+    url: "{{ item.url | default(omit) }}"
+    link: "{{ item.link | default(omit) }}"
+    protocol: "{{ item.protocol | default(omit) }}"
+    hostname: "{{ item.hostname | default(omit) }}"
+    port: "{{ item.port | default(omit) }}"
+    path: "{{ item.path | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ advertise | default([]) }}"
+  notify: update config

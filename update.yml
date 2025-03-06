@@ -1,0 +1,5 @@
+- hosts: '{{target|default("all")}}'
+  gather_facts: false
+  roles:
+    - role: kn6plv.aredn.firmware
+      version: nightly

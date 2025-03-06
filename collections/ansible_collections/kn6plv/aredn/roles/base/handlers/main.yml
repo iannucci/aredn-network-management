@@ -1,0 +1,54 @@
+# Various handler to restart daemons
+
+- name: Prepare reboot
+  set_fact:
+    rebooting: true
+  listen: need reboot
+
+- name: Update basic config
+  shell:
+    cmd: /usr/local/bin/node-setup -a mesh
+  listen: update basic config
+
+- name: Update node config
+  shell:
+    cmd: /usr/local/bin/node-setup -p -a mesh
+  listen: update config
+
+- name: Restart dnsmasq
+  service:
+    name: dnsmasq
+    state: restarted
+  when: not rebooting
+  listen: update config
+
+- name: Restart firewall
+  service:
+    name: firewall
+    state: restarted
+  when: not rebooting
+  listen: update config
+
+- name: Restart olsrd
+  service:
+    name: olsrd
+    state: restarted
+  when: not rebooting
+  listen: update config
+
+- name: Restart tunnels
+  service:
+    name: "{{ item }}"
+    state: restarted
+  loop:
+    - vtund
+    - vtundsrv
+  when: not rebooting
+  listen: update tunnels
+
+- name: Reboot
+  reboot:
+    reboot_command: /sbin/reboot
+    test_command: /bin/true
+  when: rebooting
+  listen: need reboot
