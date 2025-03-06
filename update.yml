@@ -1,5 +1,8 @@
-- hosts: '{{target|default("all")}}'
-  gather_facts: false
+- import_playbook: kn6plv.aredn.base
+
+- hosts: all
+  serial: 1
   roles:
-    - role: kn6plv.aredn.firmware
+    # Update firmware
+    - role: firmware
       version: nightly
