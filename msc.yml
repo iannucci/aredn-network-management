@@ -1,0 +1,5 @@
+all:
+  children:
+    msc:
+      hosts:
+        w6ei-msc-fs8.local.mesh:

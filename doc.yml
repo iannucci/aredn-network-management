@@ -1,0 +1,5 @@
+all:
+  children:
+    doc:
+      hosts:
+        w6ei-doc-fs8.local.mesh:

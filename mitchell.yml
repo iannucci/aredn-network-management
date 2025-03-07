@@ -1,0 +1,8 @@
+all:
+  children:
+    mitchell:
+      hosts:
+        w6ei-mitchell-sector-ne.local.mesh:
+        w6ei-mitchell-sector-nw.local.mesh:
+        w6ei-mitchell-sector-s.local.mesh:
+        w6ei-mitchell-fs8.local.mesh:

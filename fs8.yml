@@ -1,0 +1,6 @@
+all:
+  children:
+    fs8:
+      hosts:
+        w6ei-fs8-sector-ne.local.mesh:
+        w6ei-fs8-doc.local.mesh:
