@@ -52,6 +52,10 @@ class LookupModule(LookupBase):
         if not boardtype:
             raise AnsibleError("no hardware type")
 
+        if debug:
+            print("board: " + board)
+            print("boardtype: " + boardtype)
+
         # Board type naming inconsistencies
         if re.match(r"^cpe", boardtype):
             boardtype = boardtype = "tplink," + boardtype
@@ -68,7 +72,8 @@ class LookupModule(LookupBase):
                 if re.match(r"^\d\.\d\.\d\.\d$", version) or version == "release" or version == "nightly":
                     resp = requests.get(root + "config.js")
                     if debug:
-                        print(root + "config.js: " + resp.text)
+                        print("Querying " + root + "config.js: ")
+                        print(resp.text)
                     releases = []
                     if resp.status_code != 200:
                         raise AnsibleError("cannot not find versions")
@@ -100,13 +105,16 @@ class LookupModule(LookupBase):
                     raise AnsibleError("cannot read firmware overviews: %s" % (root + "data/" + version + "/overview.json"))
                 overview = resp.json()
                 if debug:
-                    print(root + "data/" + version + "/overview.json: " + resp.text)
+                    print("Querying " + root + "data/" + version + "/overview.json: ")
+                    print(resp.text)
                 target = False
                 firmware_url = False
+                if debug:
+                    print("Searching over profiles, looking for " + boardtype)
                 for profile in overview["profiles"]:
-                    if debug:
-                        print("profile[id]: " + profile["id"])
                     if profile["id"] == boardtype:
+                        if debug:
+                            print("Found it")
                         target = overview["image_url"].replace("{target}", profile["target"])
                         resp = requests.get(root + "data/" + version + "/" + profile["target"] + "/" + profile["id"] + ".json")
                         if resp.status_code != 200:
