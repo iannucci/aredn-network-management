@@ -71,13 +71,14 @@ class LookupModule(LookupBase):
                             releases.append(m.group(1))
                     if len(releases) == 0:
                         raise AnsibleError("no releases")
-                    releases.sort(key=LooseVersion)
+                    # releases.sort(key=LooseVersion)
+                    releases.sort()
                     print("releases:")
                     print(releases)
                     if version == "release":
                         version = releases[-1]
                     elif version == "nightly":
-                        version = releases[0]
+                        version = releases[0]  # with key=LooseVersion, this selects the wrong firmware
                     elif version in releases:
                         pass
                     else:
