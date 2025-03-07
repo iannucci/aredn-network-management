@@ -7,7 +7,7 @@ import requests
 import re
 import hashlib
 import os
-from ansible.errors import AnsibleError
+from ansible.errors import AnsibleError, AnsibleWarning
 from ansible.plugins.lookup import LookupBase
 from distutils.version import LooseVersion
 
@@ -88,8 +88,8 @@ class LookupModule(LookupBase):
                 target = False
                 firmware_url = False
                 for profile in overview["profiles"]:
+                    raise AnsibleWarning("+++ Profile[id]: " + profile["id"])
                     if profile["id"] == boardtype:
-                        raise AnsibleError("+++ Found profile: " + boardtype)
                         target = overview["image_url"].replace("{target}", profile["target"])
                         resp = requests.get(root + "data/" + version + "/" + profile["target"] + "/" + profile["id"] + ".json")
                         if resp.status_code != 200:
