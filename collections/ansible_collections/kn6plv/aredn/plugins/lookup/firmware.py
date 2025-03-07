@@ -36,8 +36,8 @@ os.makedirs(firmware_dir, exist_ok=True)
 class LookupModule(LookupBase):
 
     def run(self, terms, variables=None, **kwargs):
-        print("terms: ")
-        print(terms)  # a list; can't concatenate it to a string
+        # print("terms: ")
+        # print(terms)  # a list; can't concatenate it to a string
         self.set_options(var_options=variables, direct=kwargs)
 
         board = variables["ansible_board"]
@@ -62,7 +62,7 @@ class LookupModule(LookupBase):
             if version == "release" or version == "nightly" or not os.path.exists(filename):
                 if re.match(r"^\d\.\d\.\d\.\d$", version) or version == "release" or version == "nightly":
                     resp = requests.get(root + "config.js")
-                    print(root + "config.js: " + resp.text)
+                    # print(root + "config.js: " + resp.text)
                     releases = []
                     if resp.status_code != 200:
                         raise AnsibleError("cannot not find versions")
@@ -73,8 +73,8 @@ class LookupModule(LookupBase):
                         raise AnsibleError("no releases")
                     # releases.sort(key=LooseVersion)
                     releases.sort()
-                    print("releases:")
-                    print(releases)
+                    # print("releases:")
+                    # print(releases)
                     if version == "release":
                         version = releases[-1]
                     elif version == "nightly":
@@ -83,7 +83,7 @@ class LookupModule(LookupBase):
                         pass
                     else:
                         raise AnsibleError("version not found: %s" % version)
-                    print("version: " + version)
+                    # print("version: " + version)
                 else:
                     raise AnsibleError("unknown version: %s" % version)
 
@@ -91,11 +91,11 @@ class LookupModule(LookupBase):
                 if resp.status_code != 200:
                     raise AnsibleError("cannot read firmware overviews: %s" % (root + "data/" + version + "/overview.json"))
                 overview = resp.json()
-                print(root + "data/" + version + "/overview.json: " + resp.text)
+                # print(root + "data/" + version + "/overview.json: " + resp.text)
                 target = False
                 firmware_url = False
                 for profile in overview["profiles"]:
-                    print("profile[id]: " + profile["id"])
+                    # print("profile[id]: " + profile["id"])
                     if profile["id"] == boardtype:
                         target = overview["image_url"].replace("{target}", profile["target"])
                         resp = requests.get(root + "data/" + version + "/" + profile["target"] + "/" + profile["id"] + ".json")
