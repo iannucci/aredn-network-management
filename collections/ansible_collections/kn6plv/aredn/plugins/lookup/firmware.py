@@ -36,7 +36,8 @@ os.makedirs(firmware_dir, exist_ok=True)
 class LookupModule(LookupBase):
 
     def run(self, terms, variables=None, **kwargs):
-        print("terms: " + terms)
+        print("terms: ")
+        print(terms)  # a list; can't concatenate it to a string
         self.set_options(var_options=variables, direct=kwargs)
 
         board = variables["ansible_board"]
