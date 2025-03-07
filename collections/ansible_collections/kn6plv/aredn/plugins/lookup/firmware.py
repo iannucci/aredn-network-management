@@ -61,6 +61,7 @@ class LookupModule(LookupBase):
             if version == "release" or version == "nightly" or not os.path.exists(filename):
                 if re.match(r"^\d\.\d\.\d\.\d$", version) or version == "release" or version == "nightly":
                     resp = requests.get(root + "config.js")
+                    print(root + "config.js: " + resp.text)
                     releases = []
                     if resp.status_code != 200:
                         raise AnsibleError("cannot not find versions")
@@ -78,6 +79,7 @@ class LookupModule(LookupBase):
                         pass
                     else:
                         raise AnsibleError("version not found: %s" % version)
+                    print("version: " + version)
                 else:
                     raise AnsibleError("unknown version: %s" % version)
 
