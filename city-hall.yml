@@ -1,0 +1,6 @@
+all:
+  children:
+    doc:
+      hosts:
+        w6ei-city-hall-omni.local.mesh:
+        w6ei-city-hall-fs8.local.mesh:
