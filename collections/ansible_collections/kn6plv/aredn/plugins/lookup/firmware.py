@@ -72,6 +72,8 @@ class LookupModule(LookupBase):
                     if len(releases) == 0:
                         raise AnsibleError("no releases")
                     releases.sort(key=LooseVersion)
+                    print("releases:")
+                    print(releases)
                     if version == "release":
                         version = releases[-1]
                     elif version == "nightly":
