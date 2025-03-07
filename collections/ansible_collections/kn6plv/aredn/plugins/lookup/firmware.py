@@ -85,6 +85,7 @@ class LookupModule(LookupBase):
                 if resp.status_code != 200:
                     raise AnsibleError("cannot read firmware overviews: %s" % (root + "data/" + version + "/overview.json"))
                 overview = resp.json()
+                print("overview.json")
                 print(resp.text)
                 target = False
                 firmware_url = False
