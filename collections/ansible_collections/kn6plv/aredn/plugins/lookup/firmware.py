@@ -89,6 +89,7 @@ class LookupModule(LookupBase):
                 firmware_url = False
                 for profile in overview["profiles"]:
                     if profile["id"] == boardtype:
+                        raise AnsibleError("+++ Found profile: " + boardtype)
                         target = overview["image_url"].replace("{target}", profile["target"])
                         resp = requests.get(root + "data/" + version + "/" + profile["target"] + "/" + profile["id"] + ".json")
                         if resp.status_code != 200:
