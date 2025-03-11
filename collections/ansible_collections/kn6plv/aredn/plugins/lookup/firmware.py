@@ -83,7 +83,11 @@ class LookupModule(LookupBase):
                     if len(releases) == 0:
                         raise AnsibleError("no releases")
                     # releases.sort(key=LooseVersion)
+                    print('releases (pre-sort):')
+                    print(releases)
                     releases.sort()
+                    print('releases (post-sort)')
+                    print(releases)
                     if debug:
                         print("releases:")
                         print(releases)
