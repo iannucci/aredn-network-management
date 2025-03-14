@@ -1,12 +1,16 @@
 all:
   children:
-    ptmp:
+    north:
       hosts:
-        w6ei-fs8-sector-ne.local.mesh:
         w6ei-msc-fs8.local.mesh:
         w6ei-channing-fs8.local.mesh:
+        w6ei-city-hall-fs8.local.mesh:
+    south:
+      hosts:
         w6ei-doc-fs8.local.mesh:
         w6ei-mitchell-fs8.local.mesh:
         w6ei-southcourt-fs8.local.mesh:
+    hubs:
+      hosts:
+        w6ei-fs8-sector-ne.local.mesh:
         w6ei-fs8-doc.local.mesh:
-        w6ei-city-hall-fs8.local.mesh:
