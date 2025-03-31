@@ -7,7 +7,7 @@ all:
         w6ei-city-hall-fs8.local.mesh:
     south:
       hosts:
-        w6ei-doc-fs8.local.mesh:
+        w6ei-doc-fs8-dish.local.mesh:
         w6ei-mitchell-fs8.local.mesh:
         w6ei-southcourt-fs8.local.mesh:
     hubs:
