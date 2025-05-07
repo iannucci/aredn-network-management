@@ -2,4 +2,6 @@ all:
   children:
     msc:
       hosts:
+        w6ei-msc-sector-nw.local.mesh:
+        w6ei-msc-sector-s.local.mesh:
         w6ei-msc-fs8.local.mesh:
