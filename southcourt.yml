@@ -2,5 +2,5 @@ all:
   children:
     doc:
       hosts:
-        w6ei-southcourt-mitchell.local.mesh:
         w6ei-southcourt-fs8.local.mesh:
+        w6ei-southcourt-vm.local.mesh:
