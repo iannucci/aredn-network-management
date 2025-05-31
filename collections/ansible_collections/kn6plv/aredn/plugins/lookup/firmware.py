@@ -7,6 +7,7 @@ import requests
 import re
 import hashlib
 import os
+import json
 from ansible.errors import AnsibleError
 from ansible.plugins.lookup import LookupBase
 from distutils.version import LooseVersion
