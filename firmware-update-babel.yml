@@ -1,0 +1,8 @@
+- import_playbook: kn6plv.aredn.base
+
+- hosts: all
+  serial: 1
+  roles:
+    # Update firmware
+    - role: firmware
+      version: nightly-babel
