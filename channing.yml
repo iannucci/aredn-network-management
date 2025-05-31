@@ -5,4 +5,5 @@ all:
         w6ei-channing-sector-ne.local.mesh:
         w6ei-channing-sector-nw.local.mesh:
         w6ei-channing-sector-s.local.mesh:
-        w6ei-channing-fs8.local.mesh:
+        w6ei-channing-dish-250.local.mesh:
+        w6ei-channing-hap.local.mesh:

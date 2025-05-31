@@ -1,16 +1,18 @@
 all:
   children:
-    north:
+    city_hall_clients:
       hosts:
-        w6ei-msc-fs8.local.mesh:
-        w6ei-channing-fs8.local.mesh:
-        w6ei-city-hall-fs8.local.mesh:
-    south:
+        w6ei-channing-dish-250.local.mesh:
+    fs8_dish_60_clients:
       hosts:
         w6ei-doc-fs8-dish.local.mesh:
         w6ei-mitchell-fs8.local.mesh:
         w6ei-southcourt-fs8.local.mesh:
+    fs8_sector_ne_clients:
+      hosts:
+        w6ei-msc-fs8.local.mesh:
     hubs:
       hosts:
         w6ei-fs8-sector-ne.local.mesh:
-        w6ei-fs8-doc.local.mesh:
+        w6ei-fs8-dish-60.local.mesh:
+        w6ei-city-hall-omni.local.mesh:

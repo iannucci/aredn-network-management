@@ -3,5 +3,5 @@ all:
     fs8:
       hosts:
         w6ei-fs8-sector-ne.local.mesh:
-        w6ei-fs8-doc.local.mesh:
+        w6ei-fs8-dish-60.local.mesh:
         w6ei-fs8-hap.local.mesh:
